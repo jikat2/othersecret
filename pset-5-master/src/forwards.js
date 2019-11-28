@@ -7,21 +7,15 @@ let positiveInteger = null;
 
 console.log();
 
-while (endLoop === false) {
+while (Number.isNaN(positiveInteger) || positiveInteger % 1 !== 0 || positiveInteger < MIN || positiveInteger > MAX) {
     positiveInteger = Number(readlineSync.question("Positive Integer: "));
-
-    if (Number.isNaN(positiveInteger) || positiveInteger % 1 !== 0 || positiveInteger < MIN || positiveInteger > MAX) {
-    }
-    else {
-        endLoop = true;
-    }
 }
 
 let reverseNumber = "";
 const LENGTH = String(positiveInteger).length;
 
-for (let i = 0; i < LENGTH; i++) {
-    let splitNumber = positiveInteger % 10;
+for (let i = LENGTH; i > 0; i++) {
+    let splitNumber = positiveInteger/(10**i);
     positiveInteger = Math.floor(positiveInteger / 10);
     (i + 1 == LENGTH) ? reverseNumber = reverseNumber + String(splitNumber + ".") : reverseNumber = reverseNumber + String(splitNumber) + ", ";
 }
