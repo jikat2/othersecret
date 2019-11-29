@@ -24,12 +24,13 @@ let primeNumber = "Prime";
 if (num === 0 || num === 1) {
     primeNumber = "Not Prime";
 }
-
-for (let i = 2; i < num; i++) {
-    if (num % i == 0) {
-        primeNumber = "Not Prime";
-        break;
-    }
+else {
+  for (let i = 2; i <= Math.sqrt(num); i++) {
+      if (num % i == 0) {
+          primeNumber = "Not Prime";
+          break;
+      }
+  }
 }
 
 console.log("\n" + primeNumber + ".\n");

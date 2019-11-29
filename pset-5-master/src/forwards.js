@@ -4,20 +4,47 @@ const MIN = 1;
 const MAX = Number.MAX_SAFE_INTEGER;
 let endLoop = false;
 let positiveInteger = null;
+let factors = "";
+let prime = true;
 
 console.log();
 
 while (Number.isNaN(positiveInteger) || positiveInteger % 1 !== 0 || positiveInteger < MIN || positiveInteger > MAX) {
-    positiveInteger = Number(readlineSync.question("Positive Integer: "));
+    positiveInteger = Number(readlineSync.question("Positive integer: "));
 }
 
-let reverseNumber = "";
-const LENGTH = String(positiveInteger).length;
-
-for (let i = LENGTH; i > 0; i++) {
-    let splitNumber = positiveInteger/(10**i);
-    positiveInteger = Math.floor(positiveInteger / 10);
-    (i + 1 == LENGTH) ? reverseNumber = reverseNumber + String(splitNumber + ".") : reverseNumber = reverseNumber + String(splitNumber) + ", ";
+let largestFactor = 1;
+for (let i = 0; i < positiveInteger; i++) {
+    if(positiveInteger % i == 0){
+      prime = true;
+      for(let j = 2; j <= Math.sqrt(i); j++){
+        if(i % j == 0){
+          prime = false;
+        }
+      }
+      if(prime == true && i !== 1){
+        if(i > largestFactor){
+          largestFactor = i;
+        }
+      }
+    }
 }
-
-console.log("\n" + reverseNumber + "\n");
+for (let i = 0; i < positiveInteger; i++) {
+    if(positiveInteger % i == 0){
+      prime = true;
+      for(let j = 2; j <= Math.sqrt(i); j++){
+        if(i % j == 0){
+          prime = false;
+        }
+      }
+      if(prime == true && i !== 1){
+        if(i == largestFactor){
+          factors = factors + i + ".";
+        }
+        else{
+          factors = factors + i + ", ";
+        }
+      }
+    }
+}
+console.log("\n" + factors + "\n");

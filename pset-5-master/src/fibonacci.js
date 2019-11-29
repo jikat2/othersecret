@@ -9,7 +9,7 @@ let num;
 console.log();
 
 while (endLoop === false) {
-    num = Number(readlineSync.question("Positive Integer: "));
+    num = Number(readlineSync.question("Positive integer: "));
 
     if (Number.isNaN(num) || num % 1 !== 0 || num < MIN || num > MAX) {
     }
@@ -18,13 +18,9 @@ while (endLoop === false) {
     }
 }
 
-let fib = 0;
+let fib = 1;
 let a = 0;
 let b = 1;
-
-if (num === 1) {
-    fib = 0;
-}
 
 for (let i = 2; i <= num; i++) {
     fib = a + b;
