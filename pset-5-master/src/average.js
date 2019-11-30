@@ -3,22 +3,21 @@ const readlineSync = require("readline-sync");
 const MIN = 0;
 const MAX = Number.MAX_SAFE_INTEGER;
 
-let endLoop = false;
-let num = null;
+let endcondition = false;
+let num = 0;
 let sum = 0;
 let totalNumbers = 0;
 
 console.log();
 
-while (endLoop === false) {
-    let input = readlineSync.question("Non-negative integer: ");
-    num = Number(input);
+while (endcondition === false) {
+    let num = Number(readlineSync.question("Non-negative integer: "));
 
-    if (Number.isNaN(num) || input === "" || input % 1 !== 0 || num > MAX) {
+    if (num % 1 !== 0 || num > MAX) {
     }
     else if (num < MIN) {
       if(totalNumbers > 0){
-        endLoop = true;
+        endcondition = true;
       }
     }
     else {
@@ -27,5 +26,4 @@ while (endLoop === false) {
     }
 }
 
-let average = (sum / totalNumbers).toLocaleString("en", {minimumFractionDigits:3, maximumFractionDigits:3});
-console.log("\n" + average + ".\n");
+console.log("\n" + (sum / totalNumbers).toLocaleString("en", {minimumFractionDigits:3, maximumFractionDigits:3}) + ".\n");
