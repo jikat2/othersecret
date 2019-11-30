@@ -4,35 +4,33 @@ const MIN = 1;
 const MAX = 24;
 
 let height;
-let pyramidStepLeft;
-let pyramidStepRight;
+
 
 console.log();
 
-do {
+while (height % 1 !== 0 || height < MIN || height > MAX) {
     height = Number(readlineSync.question("Height: "));
-} while (Number.isNaN(height) || height % 1 !== 0 || height < MIN || height > MAX);
+}
 
 console.log();
 
-let currentLevel = height;
+let currentLevel = 1
+while (currentLevel <= height) {
+    level = "";
 
-while (currentLevel > 0) {
-    pyramidStepLeft = "";
-    pyramidStepRight = "";
-
-    for (let i = 0; i <= height; i++) {
-        pyramidStepLeft = pyramidStepLeft + "#";
+    for (let i = 0; i <= height - (currentLevel + 1); i++) {
+        level = level + " ";
     }
-    for (let i = 0; i < currentLevel - 1; i++) {
-        pyramidStepLeft = pyramidStepLeft.replace(pyramidStepLeft.charAt(i), " ");
+    for (let i = 0; i < (currentLevel + 1); i++) {
+        level = level + "#";
     }
-    for (let i = currentLevel - 2; i < height; i++) {
-        pyramidStepRight = pyramidStepRight + "#";
+    level = level + "  ";
+    for (let i = 0; i < (currentLevel + 1); i++) {
+        level = level + "#";
     }
 
-    console.log(pyramidStepLeft + "  " + pyramidStepRight);
-    currentLevel--;
+    console.log(level);
+    currentLevel++;
 }
 
 console.log();
