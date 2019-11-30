@@ -22,8 +22,7 @@ while (endLoop === false) {
       }
     }
     else {
-        sum = sum + num;
-//Add comment here for case where many input numbers are > MAX_SAFE_INTEGER
+        sum = sum + num; //There can be errors here if sum is greater than the mximum safe integer.
         totalNumbers++;
     }
 }
