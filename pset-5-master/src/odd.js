@@ -25,9 +25,9 @@ while(num2 >=1){
 }
 
 for (let i = 0; i < LENGTH + 1; i++) {
-    let splitNumber = num % 10;
-    if(splitNumber % 2 !== 0){
-      sum += splitNumber;
+    let currentdigit = num % 10;
+    if(currentdigit % 2 !== 0){
+      sum += currentdigit;
     }
     num = Math.floor(num / 10);
 }
