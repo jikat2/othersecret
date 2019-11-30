@@ -3,43 +3,28 @@ const readlineSync = require("readline-sync");
 const MIN = 1;
 const MAX = Number.MAX_SAFE_INTEGER;
 
-let num;
+let num = -1;
 
 console.log();
 
-do {
+while (num % 1 !== 0 || num < MIN || num > MAX) {
     num = Number(readlineSync.question("Positive integer: "));
-} while (Number.isNaN(num) || num % 1 !== 0 || num < MIN || num > MAX);
+}
 
 let factors = "";
-let factorLimit = num;
-let smallFactor;
-let largeFactor;
-var lastComma = 0;
 
-for (let i = 1; i <= num; i++) {
-    if (num % i === 0 && num / i === i) {
-        largeFactor = i;
-        factors = factors + largeFactor + ", ";
+
+for (let i = 1; i <= Math.sqrt(num); i++) {
+  if(num % i == 0){
+    if(i == Math.sqrt(num)){
+      factors = factors + i + ".";
     }
-    else if (num % i === 0 && i < factorLimit) {
-        smallFactor = i;
-        largeFactor = num / i;
-        factorLimit = largeFactor;
-        factors = factors + smallFactor + ", " + largeFactor + ", ";
+    else{
+      factors = factors + i + ", " + num/i + ", ";
     }
-    if (i >= factorLimit) {
-        if(i == 1){
-          lastComma = String(largeFactor) + ", ";
-          factors = factors.replace(lastComma, String(largeFactor) + ".");
-        }
-        else{
-          lastComma = " " + String(largeFactor) + ", ";
-          factors = factors.replace(lastComma, " " + String(largeFactor) + ".");
-        }
-        break;
-    }
+  }
 }
+factors = factors.replace(/,\s*$/, ".");
 
 
 console.log("\n" + factors + "\n");
