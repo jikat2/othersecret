@@ -2,35 +2,30 @@ const readlineSync = require("readline-sync");
 
 const MIN = 0;
 const MAX = Number.MAX_SAFE_INTEGER;
-
-let endLoop = false;
-let num = null;
+let isPrime = true;
+let num = -1;
 
 console.log();
 
-while (endLoop === false) {
-    let input = readlineSync.question("Non-negative integer: ");
-    num = Number(input);
-
-    if (Number.isNaN(num) || input === "" || num % 1 !== 0 || num < MIN || num > MAX) {
-    }
-    else {
-        endLoop = true;
-    }
+while (num % 1 !== 0 || num < MIN || num > MAX) {
+    num = Number(readlineSync.question("Non-negative integer: "));
 }
 
-let primeNumber = "Prime";
 
 if (num === 0 || num === 1) {
-    primeNumber = "Not prime";
+  console.log("\n Not prime.\n");
 }
 else {
   for (let i = 2; i <= Math.sqrt(num); i++) {
       if (num % i == 0) {
-          primeNumber = "Not prime";
+          isPrime = false;
           break;
       }
   }
+  if(isPrime == true){
+    console.log("\n Prime.\n");
+  }
+  else{
+    console.log("\n Not Prime.\n");
+  }
 }
-
-console.log("\n" + primeNumber + ".\n");
