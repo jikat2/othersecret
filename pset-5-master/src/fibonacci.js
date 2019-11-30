@@ -8,25 +8,19 @@ let num;
 
 console.log();
 
-while (endLoop === false) {
+while (num % 1 !== 0 || num < MIN || num > MAX) {
     num = Number(readlineSync.question("Positive integer: "));
-
-    if (Number.isNaN(num) || num % 1 !== 0 || num < MIN || num > MAX) {
-    }
-    else {
-        endLoop = true;
-    }
 }
 
-let fib = 1;
-let a = 0;
-let b = 1;
+let added = 1;
+let  num1= 0;
+let num2 = 1;
 
 for (let i = 2; i <= num; i++) {
-    fib = a + b;
-    a = b;
-    b = fib;
+    added = num1 + num2;
+    num1 = num2;
+    num2 = added;
 }
 
-fibComma = fib.toLocaleString("en");
-console.log("\n" + fibComma + ".\n");
+formatted = added.toLocaleString("en");
+console.log("\n" + formatted + ".\n");
